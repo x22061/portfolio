@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <meta property='og:type' content='website'>
+  <meta property='og:title' content='WebデザイナーNaoya Takahashi ポートフォリオ'>
+  <meta property='og:url' content='URLが入る'>
+  <meta property='og:description' content='Naoya Takahashiのポートフォリオサイトです。'>
+  <meta property="og:image" content="img/ogp.png">
+  <meta name="description" content="Naoya Takahashiのポートフォリオサイトです" />
+  <title>Naoya Takahashi ポートフォリオ</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cormorant+Garamond&family=Dancing+Script&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="css/ress.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" media="all" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="img/favicon.ico" />
+  <link rel=”canonical” href=”URLが入る” />
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- header -->
+    <header class="sub-header">
+      <div class="sub-header-inner">
+        <a href="./index.html">
+          <p class="sub-header-title">Naoya Takahashi</p>
+          <p class="sub-header-subtitle">Portfolio</p>
+        </a>
+      </div>
+
+    </header>
+    <!-- /header -->
+
+    <!-- gnav -->
+    <nav class="gnav">
+      <div class="gnav-inner">
+        <ul class="gnav-list">
+          <li class="gnav-item"><a href="./index.html#about">about</a></li>
+          <!-- <li class="gnav-item"><a href="./index.html#skill">skill</a></li> -->
+          <li class="gnav-item"><a href="./index.html#works">works</a></li>
+          <li class="gnav-item"><a href="./index.html#contact">contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- /gnav -->
+
+    <main class="content">
+
+      <article class="article">
+        <div class="article-inner">
+          <h2 class="article-title">Auto Tool</h2>
+          <p class="article-img">
+            <div style="text-align: center">
+              <img src="img/graph.png" alt="" width="600" height="600">
+            </div>
+          </p>
+          <div class="article-body">
+            <p>
+              大学の研究で使うためのツールです。動画を入力すると動画内の人物を検出して、フレームごとのジャンプの高さのデータを抽出し、グラフを作成してくれます。処理時間が長いのが課題ですが、単純作業を自動化できたことで作業の効率が上がりました。
+            </p>
+            <h3 class="article-info-title">GitHub</h3>
+            <p><a href="https://github.com/x22061/mp_to_grahp" target="_blank" rel="noopener">https://github.com/x22061/mp_to_grahp</a></p>
+            <h3 class="article-info-title">コーディングについて</h3>
+            <p>
+              Pythonでコードを書きました。人物の検出にはYolov9、人物の追従にはDeepsort、人物の座標取得にはMediapipeを使用しました。初めての技術を使う部分が多かったので試行錯誤しながら作りました。複数の人物でも対応できるように書けた点が良かったと感じています。
+            </p>
+          </div>
+          <div class="home-link">
+            <a href="./index.html#works">Works一覧へ</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="page-top" id="js-page-top">
+        <span class="material-icons-outlined">expand_less</span>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="copyright">&copy;Naoya Takahashi</div>
+    </footer>
+    <!-- /footer -->
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type='text/javascript' src="js/script.js"></script>
+</body>
+</html>
