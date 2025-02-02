@@ -55,10 +55,20 @@
         <div class="article-inner">
           <h2 class="article-title">Auto Tool</h2>
           <p class="article-img">
-            <div style="text-align: center">
-              <img src="img/graph.png" alt="" width="600" height="600">
+            <div style="text-align: center" class="img_wrap" data-images="img/yolo_out.png,img/mp_out.png,img/graph.png">
+              <img src="img/yolo_out.png" alt="" width="800" height="600" class="clickable-image">
             </div>
           </p>
+          <div id="image-modal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-content">
+              <img id="modal-image" src="">
+            </div>
+            <div class="modal-nav">
+              <button id="prev">&lt;</button>
+              <button id="next">&gt;</button>
+            </div>
+          </div>
           <div class="article-body">
             <p>
               大学の研究で使うためのツールです。動画を入力すると動画内の人物を検出して、フレームごとのジャンプの高さのデータを抽出し、グラフを作成してくれます。処理時間が長いのが課題ですが、単純作業を自動化できたことで作業の効率が上がりました。

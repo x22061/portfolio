@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <meta property='og:type' content='website'>
-  <meta property='og:title' content='WebデザイナーHanako Yamada ポートフォリオ'>
+  <meta property='og:title' content='Naoya Takahashi ポートフォリオ'>
   <meta property='og:url' content='URLが入る'>
-  <meta property='og:description' content='Hanako Yamadaのポートフォリオサイトです。'>
+  <meta property='og:description' content='Naoya Takahashのポートフォリオサイトです。'>
   <meta property="og:image" content="img/ogp.png">
-  <meta name="description" content="Hanako Yamadaのポートフォリオサイトです" />
+  <meta name="description" content="Naoya Takahashのポートフォリオサイトです" />
   <title>Naoya Takahashi ポートフォリオ</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link
@@ -55,10 +55,20 @@
         <div class="article-inner">
           <h2 class="article-title">Cooking Scheduler App</h2>
           <p class="article-img">
-            <div style="text-align: center">
-              <img src="img/recipe_sc.png" alt="" width="600" height="600">
+            <div style="text-align: center" class="img_wrap" data-images="img/recipe_sc.png,img/recipe_sc2.png">
+              <img src="img/recipe_sc.png" alt="" width="800" height="600" class="clickable-image">
             </div>
           </p>
+          <div id="image-modal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-content">
+              <img id="modal-image" src="">
+            </div>
+            <div class="modal-nav">
+              <button id="prev">&lt;</button>
+              <button id="next">&gt;</button>
+            </div>
+          </div>
           <div class="article-body">
             <p>
               複数の料理を作る際の不満を解消するために開発したアプリです。作りたい料理をすべて選択すると、効率的な調理順序を教えてくれます。料理ごとにレシピを確認する手間が省けるほか、調理中の待ち時間を最小限に抑えることで、効率的に調理ができます。既存の料理アプリにはない機能に焦点を当て、日常生活で直面する課題の解決を目指しました。
@@ -71,7 +81,7 @@
             </p>
             <h3 class="article-info-title">コーディングについて</h3>
             <p>
-              Pythonの使用経験があったため、Djangoを使用して作りました。調理の順番を決めるロジックを考えることに一番苦戦しました。家のコンロの数によって処理を変えたり、料理が出来上がる順番を揃えるなど、まだ追加したい機能があるので、今後ブラッシュアップしていきたいです。
+              Pythonの使用経験があったため、Djangoを用いて開発しました。調理の順番を決めるロジックを考えるのに最も苦戦しました。一度完成させたコードは条件が複雑で無駄が多かったため、大幅に修正し、機能を維持しつつ、より見やすく分かりやすいコードにすることに注力しました。
             </p>
           </div>
           <div class="home-link">
