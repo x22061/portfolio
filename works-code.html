@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <meta property='og:type' content='website'>
+  <meta property='og:title' content='Naoya Takahashia ポートフォリオ'>
+  <meta property='og:url' content='URLが入る'>
+  <meta property='og:description' content='Naoya Takahashiのポートフォリオサイトです。'>
+  <meta property="og:image" content="img/ogp.png">
+  <meta name="description" content="Naoya Takahashiのポートフォリオサイトです" />
+  <title>Naoya Takahashi ポートフォリオ</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cormorant+Garamond&family=Dancing+Script&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="css/ress.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="css/works_style.css" media="all" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="img/favicon.ico" />
+  <link rel=”canonical” href=”URLが入る” />
+  <style>
+    #bg-canvas {
+      position: fixed; /* 背景を固定 */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* 背景を最背面に配置 */
+    }
+    .content-wrapper {
+      position: relative; /* コンテンツを前面に配置 */
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- header -->
+    <header class="sub-header">
+      <div class="sub-header-inner">
+        <a href="./index.html">
+          <p class="sub-header-title">Naoya Takahashi</p>
+          <p class="sub-header-subtitle">Portfolio</p>
+        </a>
+      </div>
+
+    </header>
+    <!-- /header -->
+
+    <!-- gnav -->
+    <nav class="gnav">
+      <div class="gnav-inner">
+        <ul class="gnav-list">
+          <li class="gnav-item"><a href="./index.html#about">about</a></li>
+          <li class="gnav-item"><a href="./index.html#works">works</a></li>
+          <li class="gnav-item"><a href="./index.html#contact">contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- /gnav -->
+
+    <main class="content">
+
+      <article class="article">
+        <div class="article-inner">
+          <h2 class="article-title">Auto Tool</h2>
+          <p class="article-img">
+            <div style="text-align: center" class="img_wrap" data-images="img/yolo_out.png,img/mp_out.png,img/graph.png">
+              <img src="img/yolo_out.png" alt="" width="800" height="600" class="clickable-image">
+            </div>
+          </p>
+          <div id="image-modal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-content">
+              <img id="modal-image" src="">
+            </div>
+            <div class="modal-nav">
+              <button id="prev">&lt;</button>
+              <button id="next">&gt;</button>
+            </div>
+          </div>
+          <div class="article-body">
+            <p>
+              大学の研究で使うためのツールです。動画を入力すると動画内の人物を検出して、フレームごとのジャンプの高さのデータを抽出し、グラフを作成してくれます。処理時間が長いのが課題ですが、単純作業を自動化できたことで作業の効率が上がりました。
+            </p>
+            <h3 class="article-info-title">GitHub</h3>
+            <p><a href="https://github.com/x22061/mp_to_grahp" target="_blank" rel="noopener">https://github.com/x22061/mp_to_grahp</a></p>
+            <h3 class="article-info-title">コーディングについて</h3>
+            <p>
+              Pythonでコードを書きました。人物の検出にはYolov9、人物の追従にはDeepsort、人物の座標取得にはMediapipeを使用しました。初めての技術を使う部分が多かったので試行錯誤しながら作りました。複数の人物でも対応できるように書けた点が良かったと感じています。
+            </p>
+          </div>
+          <div class="home-link">
+            <a href="./index.html#works">Works一覧へ</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="page-top" id="js-page-top">
+        <span class="material-icons-outlined">expand_less</span>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="copyright">&copy;Naoya Takahashi</div>
+    </footer>
+    <!-- /footer -->
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type='text/javascript' src="js/script.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.167.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module">
+    import * as THREE from "three";
+
+    // サイズ指定
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    // レンダラー作成
+    const canvasElement = document.querySelector("#bg-canvas");
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasElement,
+    });
+    renderer.setClearColor(new THREE.Color("rgb(255, 255, 255)"));
+    renderer.setSize(width, height);
+
+    // シーン作成
+    const scene = new THREE.Scene();
+
+    // カメラ作成
+    const camera = new THREE.PerspectiveCamera(45, width / height);
+    camera.position.set(0, 0, 700);
+
+    // 球を複数作成
+    const spheres = [];
+    const sphereCount = 50; // 球の数
+    for (let i = 0; i < sphereCount; i++) {
+      const radius = Math.random() * 50 + 65; // ランダムな半径
+      const geometry = new THREE.SphereGeometry(radius, 30, 30);
+      const material = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(`rgb(255,255,0)`),
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.position.set(
+            Math.random() * 1000 - 500, // ランダムな位置
+            Math.random() * 0 - 1400,
+            Math.random() * 1000 - 500
+          );
+          scene.add(mesh);
+          spheres.push({
+            mesh: mesh,
+            radius: radius,
+            speed: new THREE.Vector3(
+              Math.random() * 0.15 - 0.1,
+              Math.random() * 0.15 - 0.1,
+              Math.random() * 0.15 - 0.1
+            ),
+          });
+        }
+
+    const sphereCount_2 = 50; // 球の数
+    for (let i = 0; i < sphereCount_2; i++) {
+      const radius = Math.random() * 50 +20; // ランダムな半径
+      const geometry = new THREE.SphereGeometry(radius, 30, 30);
+      const material = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(`rgb(255,255,0)`),
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.position.set(
+            Math.random() * 1000 - 500, // ランダムな位置
+            Math.random() * 2000 - 1500,
+            Math.random() * 1000 - 500
+          );
+          scene.add(mesh);
+          spheres.push({
+            mesh: mesh,
+            radius: radius,
+            speed: new THREE.Vector3(
+              Math.random() * 0.15 - 0.1,
+              Math.random() * 0.15 - 0.1,
+              Math.random() * 0.15 - 0.1
+            ),
+          });
+        }
+
+    for (let i = 0; i < sphereCount_2; i++) {
+        const radius = Math.random() * 50 + 65; // ランダムな半径
+        const geometry = new THREE.SphereGeometry(radius, 30, 30);
+        const material = new THREE.MeshStandardMaterial({
+            color: new THREE.Color(`rgb(255,205,0)`),
+            emissive: new THREE.Color(`rgb(255,205,0)`), // 発光色
+            emissiveIntensity: 0.7, // 発光強度
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(
+            Math.random() * 1000 - 500, // ランダムな位置
+            Math.random() * 0 - 1500,
+            Math.random() * 1000 - 500
+        );
+
+        scene.add(mesh);
+        spheres.push({
+            mesh: mesh,
+            radius: radius,
+            speed: new THREE.Vector3(
+            Math.random() * 0.15 - 0.1,
+            Math.random() * 0.15 - 0.1,
+            Math.random() * 0.15 - 0.1
+            ),
+        });
+        }
+
+    for (let i = 0; i < sphereCount_2; i++) {
+        const radius = Math.random() * 50 + 45; // ランダムな半径
+        const geometry = new THREE.SphereGeometry(radius, 30, 30);
+        const material = new THREE.MeshStandardMaterial({
+            color: new THREE.Color(`rgb(255,205,0)`),
+            emissive: new THREE.Color(`rgb(255,205,0)`), // 発光色
+            emissiveIntensity: 0.7, // 発光強度
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(
+            Math.random() * 1000 - 500, // ランダムな位置
+            Math.random() * 1900 - 3000,
+            Math.random() * 1000 - 500
+        );
+
+        scene.add(mesh);
+        spheres.push({
+            mesh: mesh,
+            radius: radius,
+            speed: new THREE.Vector3(
+            Math.random() * 0.15 - 0.1,
+            Math.random() * 0.15 - 0.1,
+            Math.random() * 0.15 - 0.1
+            ),
+        });
+        }
+
+        
+
+    // 環境光源
+    const ambient = new THREE.AmbientLight(0xffffff, 2.5);
+    scene.add(ambient);
+
+    // 平行光源
+    const directionalLight = new THREE.DirectionalLight(0xffffff);
+    directionalLight.position.set(1, 1, 1);
+    scene.add(directionalLight);
+
+    tick();
+
+    function tick() {
+        // スクロール位置の取得
+        const scrollY = window.scrollY;
+
+        // 球の移動と衝突判定
+        for (let i = 0; i < spheres.length; i++) {
+        const sphere1 = spheres[i];
+        sphere1.mesh.position.add(sphere1.speed);
+
+        // 壁との衝突判定
+        if (
+            Math.abs(sphere1.mesh.position.x) > 400 - sphere1.radius ||
+            Math.abs(sphere1.mesh.position.y) > 400 - sphere1.radius ||
+            Math.abs(sphere1.mesh.position.z) > 400 - sphere1.radius
+        ) {
+            sphere1.speed.multiplyScalar(-1); // 速度ベクトルを反転
+        }
+
+        // 球同士の衝突判定
+        for (let j = i + 1; j < spheres.length; j++) {
+            const sphere2 = spheres[j];
+            const distance = sphere1.mesh.position.distanceTo(sphere2.mesh.position);
+            if (distance < sphere1.radius + sphere2.radius) {
+            // 衝突時の処理（速度ベクトルを反転）
+            sphere1.speed.multiplyScalar(-1);
+            sphere2.speed.multiplyScalar(-1);
+
+            // 衝突時の位置調整（球が重ならないようにする）
+            const overlap = sphere1.radius + sphere2.radius - distance;
+            const direction = sphere2.mesh.position
+                .clone()
+                .sub(sphere1.mesh.position)
+                .normalize();
+            sphere1.mesh.position.sub(direction.clone().multiplyScalar(overlap / 2));
+            sphere2.mesh.position.add(direction.clone().multiplyScalar(overlap / 2));
+            }
+        }
+
+        // スクロール位置に応じた球の位置の変更
+        // sphere1.mesh.position.y += scrollY * 0.00001; // スクロール量に応じてY座標を変更
+        }
+
+        // レンダリング
+        renderer.render(scene, camera);
+        requestAnimationFrame(tick);
+    }
+
+    // スクロールイベントリスナーを追加
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      camera.position.y = 0 - scrollY; // カメラのY座標をスクロール位置に合わせる
+
+      // スクロール位置に応じて背景色をフェードイン
+      const startScroll = 1500; // フェードインを開始するスクロール位置
+      const maxScroll = 1600; // フェードインが完了するスクロール位置
+
+      if (scrollY >= startScroll) {
+        const fadeProgress = Math.min(1, (scrollY - startScroll) / (maxScroll - startScroll)); // スクロール進行度（0から1）
+        const backgroundColor = new THREE.Color(1 - fadeProgress, 1 - fadeProgress, 1 - fadeProgress); // RGB値を徐々に減らす
+        renderer.setClearColor(backgroundColor);
+      } else {
+        renderer.setClearColor(new THREE.Color(1, 1, 1)); // フェードイン開始前は白
+      }
+
+      if (scrollY >= maxScroll) {
+        renderer.setClearColor(new THREE.Color(1.0, 1.0, 1.0)); // フェードイン完了後に黒に変更
+      }
+     /// スクロール位置に応じて光の強度を調整
+      const maxLightIntensity = 2.5; // 最大の明るさ
+      const minLightIntensity = 2.5; // 最低の明るさ
+      let lightIntensity = maxLightIntensity; // 初期値を最大に設定
+
+      if (scrollY >= startScroll) {
+        lightIntensity = maxLightIntensity - (maxLightIntensity - minLightIntensity) * Math.min(1, (scrollY - startScroll) / (maxScroll - startScroll)); // 光の強度を徐々に減らす
+      }
+      ambient.intensity = lightIntensity;
+      directionalLight.intensity = lightIntensity;
+    });
+    
+    </script>
+</body>
+</html>
