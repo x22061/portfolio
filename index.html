@@ -11,7 +11,7 @@
   <meta name="description" content="Naoya Takahashiのポートフォリオサイトです">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* 3Dモデルを背景に固定する */
+    
     #bg-canvas {
       position: fixed;
       top: 0;
@@ -21,7 +21,7 @@
       z-index: -1;
     }
 
-    /* メインコンテンツを前面に表示 */
+    
     .content-wrapper {
       position: relative;
       z-index: 1;
@@ -177,7 +177,7 @@
 
           // TVスクリーンの取得
           model.traverse((child) => {
-            if (child.isMesh && (child.name === "screen" )) {  // TVスクリーンのオブジェクト名を確認
+            if (child.isMesh && (child.name === "screen" )) {  // screenオブジェクト取得
               tvScreen = child;
             } 
           });
@@ -217,8 +217,6 @@
           textureLoader.load('front_img/portfolio.png', (texture) => { texture.flipY = false; }),
       ];
 
-      //const defaultImage = textureLoader.load('default.png', (texture) => { texture.flipY = false; });  // **デフォルト画像**
-
       const clock = new THREE.Clock(); // アニメーション用の時計
 
       // アニメーションループ
@@ -226,8 +224,7 @@
         requestAnimationFrame(animate);
 
         const delta = clock.getDelta();
-        if (mixer) mixer.update(delta); // アニメーションを更新
-
+        if (mixer) mixer.update(delta); 
         renderer.render(scene, camera);
       }
       animate();
@@ -309,14 +306,14 @@
         }
 
         // **sittingAction2の制御**
-        if (scrollY >= 3300 && sittingPlayed === false && sittingPlayed2 === true) {
+        if (scrollY >= 3300 && scrollY <= 3400 && sittingPlayed === false && sittingPlayed2 === true) {
           // すでに再生中でないアニメーションの場合にだけ停止
           currentAction.stop();  // 現在のアニメーションを停止
           sittingAction2.play(); // 再生を開始
           currentAction2 = sittingAction2; // 現在のアニメーションを更新
         }
 
-        // **sittingAction2の制御**
+        //　**初期アニメーションの制御**
         if (scrollY >= 4300) {
           // すでに再生中でないアニメーションの場合にだけ停止
           currentAction.stop();  // 現在のアニメーションを停止
@@ -335,21 +332,11 @@
         const loader = document.querySelector(".loader");
         loader.classList.add("hidden");
 
-        // 1秒後に完全に削除（透明でもクリック判定があるのを防ぐ）
+        // ローディング画面が消えた後にスクロールできるようにする
         setTimeout(() => {
           loader.style.display = "none";
         }, 1000);
-      }, 3000); // 3秒後にフェードアウト開始
-    });
-  </script>
-
-  <script>
-    const redBg = document.querySelector('.red-background');
-    window.addEventListener('scroll', () => {
-      let scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      let scrollRatio = window.scrollY / scrollHeight;
-      let newHeight = scrollRatio * 10000; // スクロール量に応じて高さを変更
-      redBg.style.height = `${newHeight}%`;
+      }, 3000); 
     });
   </script>
 
